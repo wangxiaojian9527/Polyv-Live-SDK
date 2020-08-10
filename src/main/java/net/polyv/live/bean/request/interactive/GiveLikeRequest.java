@@ -1,19 +1,18 @@
-package com.lamdaer.polyv.live.bean.request.interactive;
-
-import cn.hutool.core.bean.BeanUtil;
-import com.lamdaer.polyv.live.bean.request.PolyvLiveBaseRequest;
-import com.lamdaer.polyv.live.enumeration.ErrorCodeEnum;
+package net.polyv.live.bean.request.interactive;
 
 import java.util.Map;
 
+import cn.hutool.core.bean.BeanUtil;
+import net.polyv.live.bean.request.PolyvLiveBaseRequest;
+import net.polyv.live.enumeration.ErrorCodeEnum;
+
 /**
  * 发送点赞请求类
- *
  * @author lamdaer
- * createTime 2020/5/8
+ * @createTime 2020/5/8
  */
 public class GiveLikeRequest extends PolyvLiveBaseRequest {
-
+    
     /**
      * <pre>
      * 字段名：频道号
@@ -23,7 +22,7 @@ public class GiveLikeRequest extends PolyvLiveBaseRequest {
      * </pre>
      */
     private int channelId;
-
+    
     /**
      * <pre>
      * 字段名：观众ID
@@ -32,7 +31,7 @@ public class GiveLikeRequest extends PolyvLiveBaseRequest {
      * </pre>
      */
     private String viewerId;
-
+    
     /**
      * <pre>
      * 字段名：点赞的数目
@@ -42,45 +41,45 @@ public class GiveLikeRequest extends PolyvLiveBaseRequest {
      * </pre>
      */
     private int times = ErrorCodeEnum.DEFAULT.getCode();
-
-
+    
+    
     public GiveLikeRequest(String appId, String appSecret, int channelId, String viewerId) {
         super(appId, appSecret);
         this.channelId = channelId;
         this.viewerId = viewerId;
     }
-
+    
     public GiveLikeRequest(String appId, String appSecret, int channelId, String viewerId, int times) {
         super(appId, appSecret);
         this.channelId = channelId;
         this.viewerId = viewerId;
         this.times = times;
     }
-
+    
     public int getChannelId() {
         return channelId;
     }
-
+    
     public void setChannelId(int channelId) {
         this.channelId = channelId;
     }
-
+    
     public String getViewerId() {
         return viewerId;
     }
-
+    
     public void setViewerId(String viewerId) {
         this.viewerId = viewerId;
     }
-
+    
     public int getTimes() {
         return times;
     }
-
+    
     public void setTimes(int times) {
         this.times = times;
     }
-
+    
     @Override
     public Map<String, Object> getParams() {
         Map<String, Object> paramMap = BeanUtil.beanToMap(this);
@@ -89,24 +88,18 @@ public class GiveLikeRequest extends PolyvLiveBaseRequest {
         params.put("sign", this.sign);
         return params;
     }
-
-
+    
+    
     @Override
     protected Map<String, Object> paraFilter(Map<String, Object> parameter) {
         parameter.put("channelId", "");
         return super.paraFilter(parameter);
     }
-
-
+    
+    
     @Override
     public String toString() {
-        return "GiveLikeRequest{" +
-                "viewerId='" + viewerId + '\'' +
-                ", times=" + times +
-                ", appId='" + appId + '\'' +
-                ", appSecret='" + appSecret + '\'' +
-                ", timestamp=" + timestamp +
-                ", sign='" + sign + '\'' +
-                '}';
+        return "GiveLikeRequest{" + "viewerId='" + viewerId + '\'' + ", times=" + times + ", appId='" + appId + '\'' +
+                ", appSecret='" + appSecret + '\'' + ", timestamp=" + timestamp + ", sign='" + sign + '\'' + '}';
     }
 }

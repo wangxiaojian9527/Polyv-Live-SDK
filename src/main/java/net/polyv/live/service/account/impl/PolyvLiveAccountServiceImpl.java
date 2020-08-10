@@ -1,16 +1,15 @@
-package com.lamdaer.polyv.live.service.account.impl;
+package net.polyv.live.service.account.impl;
 
-import com.lamdaer.polyv.live.bean.request.account.ChangeChannelClassificationNameRequest;
-import com.lamdaer.polyv.live.bean.result.PolyvLiveCommonResult;
-import com.lamdaer.polyv.live.constant.ApiConstants;
-import com.lamdaer.polyv.live.service.PolyvLiveRequestAbstractService;
-import com.lamdaer.polyv.live.service.account.PolyvLiveAccountService;
+import net.polyv.live.bean.request.account.ChangeChannelClassificationNameRequest;
+import net.polyv.live.bean.result.PolyvLiveCommonResult;
+import net.polyv.live.constant.ApiConstants;
+import net.polyv.live.service.PolyvLiveRequestAbstractService;
+import net.polyv.live.service.account.PolyvLiveAccountService;
 
 /**
  * 账户 Service 实现类
- *
  * @author lamdaer
- * createTime 2020/5/4
+ * @createTime 2020/5/4
  */
 public class PolyvLiveAccountServiceImpl extends PolyvLiveRequestAbstractService implements PolyvLiveAccountService {
     @Override

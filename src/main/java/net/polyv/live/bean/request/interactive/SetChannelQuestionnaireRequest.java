@@ -1,17 +1,16 @@
-package com.lamdaer.polyv.live.bean.request.interactive;
-
-import cn.hutool.core.bean.BeanUtil;
-import com.lamdaer.polyv.live.bean.request.PolyvLiveBaseRequest;
+package net.polyv.live.bean.request.interactive;
 
 import java.util.List;
 import java.util.Map;
 
+import cn.hutool.core.bean.BeanUtil;
+import net.polyv.live.bean.request.PolyvLiveBaseRequest;
+
 /**
  * 设置频道问卷信息
  * 文档地址：http://dev.polyv.net/2019/liveproduct/l-api/zbhd/add-edit-questionnaire/
- *
  * @author lamdaer
- * createTime 2020/5/29
+ * @createTime 2020/5/29
  */
 public class SetChannelQuestionnaireRequest extends PolyvLiveBaseRequest {
     /**
@@ -22,7 +21,7 @@ public class SetChannelQuestionnaireRequest extends PolyvLiveBaseRequest {
      * </pre>
      */
     private int channelId;
-
+    
     /**
      * <pre>
      * 字段名：问卷id,修改问卷时需要
@@ -31,7 +30,7 @@ public class SetChannelQuestionnaireRequest extends PolyvLiveBaseRequest {
      * </pre>
      */
     private String questionnaireId;
-
+    
     /**
      * <pre>
      * 字段名：客户自定义问卷id
@@ -40,7 +39,7 @@ public class SetChannelQuestionnaireRequest extends PolyvLiveBaseRequest {
      * </pre>
      */
     private String customQuestionnaireId;
-
+    
     /**
      * <pre>
      * 字段名：问卷标题
@@ -49,7 +48,7 @@ public class SetChannelQuestionnaireRequest extends PolyvLiveBaseRequest {
      * </pre>
      */
     private String questionnaireTitle;
-
+    
     /**
      * <pre>
      * 字段名：题目数组
@@ -58,23 +57,26 @@ public class SetChannelQuestionnaireRequest extends PolyvLiveBaseRequest {
      * </pre>
      */
     private List<QuestionBody> questions;
-
-    public SetChannelQuestionnaireRequest(String appId, String appSecret, int channelId, String questionnaireTitle, List<QuestionBody> questions) {
+    
+    public SetChannelQuestionnaireRequest(String appId, String appSecret, int channelId, String questionnaireTitle,
+            List<QuestionBody> questions) {
         super(appId, appSecret);
         this.channelId = channelId;
         this.questionnaireTitle = questionnaireTitle;
         this.questions = questions;
     }
-
-    public SetChannelQuestionnaireRequest(String appId, String appSecret, int channelId, String questionnaireId, String questionnaireTitle, List<QuestionBody> questions) {
+    
+    public SetChannelQuestionnaireRequest(String appId, String appSecret, int channelId, String questionnaireId,
+            String questionnaireTitle, List<QuestionBody> questions) {
         super(appId, appSecret);
         this.channelId = channelId;
         this.questionnaireId = questionnaireId;
         this.questionnaireTitle = questionnaireTitle;
         this.questions = questions;
     }
-
-    public SetChannelQuestionnaireRequest(String appId, String appSecret, int channelId, String questionnaireId, String customQuestionnaireId, String questionnaireTitle, List<QuestionBody> questions) {
+    
+    public SetChannelQuestionnaireRequest(String appId, String appSecret, int channelId, String questionnaireId,
+            String customQuestionnaireId, String questionnaireTitle, List<QuestionBody> questions) {
         super(appId, appSecret);
         this.channelId = channelId;
         this.questionnaireId = questionnaireId;
@@ -82,7 +84,7 @@ public class SetChannelQuestionnaireRequest extends PolyvLiveBaseRequest {
         this.questionnaireTitle = questionnaireTitle;
         this.questions = questions;
     }
-
+    
     @Override
     public Map<String, Object> getParams() {
         Map<String, Object> paramMap = BeanUtil.beanToMap(this);
@@ -95,59 +97,52 @@ public class SetChannelQuestionnaireRequest extends PolyvLiveBaseRequest {
         params.remove("channelId");
         return params;
     }
-
+    
     public int getChannelId() {
         return channelId;
     }
-
+    
     public void setChannelId(int channelId) {
         this.channelId = channelId;
     }
-
+    
     public String getQuestionnaireId() {
         return questionnaireId;
     }
-
+    
     public void setQuestionnaireId(String questionnaireId) {
         this.questionnaireId = questionnaireId;
     }
-
+    
     public String getCustomQuestionnaireId() {
         return customQuestionnaireId;
     }
-
+    
     public void setCustomQuestionnaireId(String customQuestionnaireId) {
         this.customQuestionnaireId = customQuestionnaireId;
     }
-
+    
     public String getQuestionnaireTitle() {
         return questionnaireTitle;
     }
-
+    
     public void setQuestionnaireTitle(String questionnaireTitle) {
         this.questionnaireTitle = questionnaireTitle;
     }
-
+    
     public List<QuestionBody> getQuestions() {
         return questions;
     }
-
+    
     public void setQuestions(List<QuestionBody> questions) {
         this.questions = questions;
     }
-
+    
     @Override
     public String toString() {
-        return "SetChannelQuestionnaireRequest{" +
-                "channelId=" + channelId +
-                ", questionnaireId='" + questionnaireId + '\'' +
-                ", customQuestionnaireId='" + customQuestionnaireId + '\'' +
-                ", questionnaireTitle='" + questionnaireTitle + '\'' +
-                ", questions=" + questions +
-                ", appId='" + appId + '\'' +
-                ", appSecret='" + appSecret + '\'' +
-                ", timestamp=" + timestamp +
-                ", sign='" + sign + '\'' +
-                '}';
+        return "SetChannelQuestionnaireRequest{" + "channelId=" + channelId + ", questionnaireId='" + questionnaireId +
+                '\'' + ", customQuestionnaireId='" + customQuestionnaireId + '\'' + ", questionnaireTitle='" +
+                questionnaireTitle + '\'' + ", questions=" + questions + ", appId='" + appId + '\'' + ", appSecret='" +
+                appSecret + '\'' + ", timestamp=" + timestamp + ", sign='" + sign + '\'' + '}';
     }
 }

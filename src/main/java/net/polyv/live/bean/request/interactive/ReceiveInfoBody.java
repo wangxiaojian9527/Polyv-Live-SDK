@@ -1,10 +1,9 @@
-package com.lamdaer.polyv.live.bean.request.interactive;
+package net.polyv.live.bean.request.interactive;
 
 /**
  * 设置中奖者信息-自定义字段
- *
  * @author lamdaer
- * createTime 2020/5/22
+ * @createTime 2020/5/22
  */
 public class ReceiveInfoBody {
     /**
@@ -15,7 +14,7 @@ public class ReceiveInfoBody {
      * </pre>
      */
     private String field;
-
+    
     /**
      * <pre>
      * 字段名：值
@@ -24,33 +23,30 @@ public class ReceiveInfoBody {
      * </pre>
      */
     private String value;
-
+    
     public ReceiveInfoBody(String field, String value) {
         this.field = field;
         this.value = value;
     }
-
+    
     public String getField() {
         return field;
     }
-
+    
     public void setField(String field) {
         this.field = field;
     }
-
+    
     public String getValue() {
         return value;
     }
-
+    
     public void setValue(String value) {
         this.value = value;
     }
-
+    
     @Override
     public String toString() {
-        return "ReceiveInfoBody{" +
-                "field='" + field + '\'' +
-                ", value='" + value + '\'' +
-                '}';
+        return "ReceiveInfoBody{" + "field='" + field + '\'' + ", value='" + value + '\'' + '}';
     }
 }

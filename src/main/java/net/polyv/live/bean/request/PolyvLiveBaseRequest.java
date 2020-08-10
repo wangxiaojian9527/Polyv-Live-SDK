@@ -1,20 +1,23 @@
-package com.lamdaer.polyv.live.bean.request;
+package net.polyv.live.bean.request;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
-import com.lamdaer.polyv.live.enumeration.ErrorCodeEnum;
-
-import java.util.*;
+import net.polyv.live.enumeration.ErrorCodeEnum;
 
 /**
  * 请求基础类
- *
  * @author lamdaer
- * createTime 2020/5/4
+ * @createTime 2020/5/4
  */
 public abstract class PolyvLiveBaseRequest {
-
+    
     /**
      * <pre>
      * 字段名：账号应用ID
@@ -23,7 +26,7 @@ public abstract class PolyvLiveBaseRequest {
      * </pre>
      */
     protected String appId;
-
+    
     /**
      * <pre>
      * 字段名：密钥
@@ -32,7 +35,7 @@ public abstract class PolyvLiveBaseRequest {
      * </pre>
      */
     protected String appSecret;
-
+    
     /**
      * <pre>
      * 字段名：时间戳
@@ -41,7 +44,7 @@ public abstract class PolyvLiveBaseRequest {
      * </pre>
      */
     protected Long timestamp;
-
+    
     /**
      * <pre>
      * 字段名：签名
@@ -50,16 +53,15 @@ public abstract class PolyvLiveBaseRequest {
      * </pre>
      */
     protected String sign;
-
+    
     public PolyvLiveBaseRequest(String appId, String appSecret) {
         this.appId = appId;
         this.appSecret = appSecret;
         this.timestamp = System.currentTimeMillis();
     }
-
+    
     /**
      * 获取处理后的请求参数
-     *
      * @return 请求参数集合
      */
     public Map<String, Object> getParams() {
@@ -69,10 +71,9 @@ public abstract class PolyvLiveBaseRequest {
         params.put("sign", this.sign);
         return params;
     }
-
+    
     /**
      * 签名生成函数
-     *
      * @param parameter 需要参与签名的参数集合
      * @param appSecret 直播后台-开发设置-身份认证-AppSecret
      * @return 签名值
@@ -84,10 +85,9 @@ public abstract class PolyvLiveBaseRequest {
         String upperCase = encrypted.toUpperCase();
         return upperCase;
     }
-
+    
     /**
      * 参数过滤
-     *
      * @param parameter 需要过滤的参数集合
      * @return 过滤后的参数集合
      */
@@ -98,22 +98,17 @@ public abstract class PolyvLiveBaseRequest {
         }
         for (String key : parameter.keySet()) {
             String value = parameter.get(key) + "";
-            if (value.equalsIgnoreCase("null")
-                    || StrUtil.hasBlank(value)
-                    || key.equalsIgnoreCase("appSecret")
-                    || key.equalsIgnoreCase("sign")
-                    || value.equals(String.valueOf(ErrorCodeEnum.DEFAULT.getCode()))
-            ) {
+            if (value.equalsIgnoreCase("null") || StrUtil.hasBlank(value) || key.equalsIgnoreCase("appSecret") ||
+                    key.equalsIgnoreCase("sign") || value.equals(String.valueOf(ErrorCodeEnum.DEFAULT.getCode()))) {
                 continue;
             }
             result.put(key, value);
         }
         return result;
     }
-
+    
     /**
      * 参数拼接
-     *
      * @param params 需要进行拼接的参数集合
      * @return 拼接后的参数集合
      */
@@ -128,47 +123,43 @@ public abstract class PolyvLiveBaseRequest {
         }
         return sb.toString();
     }
-
-
+    
+    
     public String getAppId() {
         return appId;
     }
-
+    
     public void setAppId(String appId) {
         this.appId = appId;
     }
-
+    
     public String getAppSecret() {
         return appSecret;
     }
-
+    
     public void setAppSecret(String appSecret) {
         this.appSecret = appSecret;
     }
-
+    
     public Long getTimestamp() {
         return timestamp;
     }
-
+    
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
-
+    
     public String getSign() {
         return sign;
     }
-
+    
     public void setSign(String sign) {
         this.sign = sign;
     }
-
+    
     @Override
     public String toString() {
-        return "PolyvLiveBaseRequest{" +
-                "appId='" + appId + '\'' +
-                ", appSecret='" + appSecret + '\'' +
-                ", timestamp=" + timestamp +
-                ", sign='" + sign + '\'' +
-                '}';
+        return "PolyvLiveBaseRequest{" + "appId='" + appId + '\'' + ", appSecret='" + appSecret + '\'' +
+                ", timestamp=" + timestamp + ", sign='" + sign + '\'' + '}';
     }
 }
