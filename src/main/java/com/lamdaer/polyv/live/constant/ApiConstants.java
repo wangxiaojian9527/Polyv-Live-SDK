@@ -68,7 +68,7 @@ public class ApiConstants {
      * https://dev.polyv.net/2019/liveproduct/l-api/zbhd/get-checkin/
      */
     public static final String GET_CHECK_IN = "https://api.polyv.net/live/v3/channel/chat/get-checkins";
-
+    
     private ApiConstants() {
     }
 }

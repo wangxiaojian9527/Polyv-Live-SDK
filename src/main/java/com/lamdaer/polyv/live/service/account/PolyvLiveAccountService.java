@@ -18,4 +18,5 @@ public interface PolyvLiveAccountService {
      * @return 响应结果
      */
     PolyvLiveCommonResult changeChannelClassificationName(ChangeChannelClassificationNameRequest request);
+    
 }
